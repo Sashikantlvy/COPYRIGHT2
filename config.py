@@ -12,7 +12,7 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN")
 # -----------------A-------------------------------
 BOT_USERNAME = os.environ.get("BOT_USERNAME")
 # ------------------X------------------------------
-OWNER_ID = int(os.environ.get("OWNER_ID"))
+OWNER_ID = int(os.environ.get("SASHIKANT_XD"))
 # ------------------X------------------------------
 # ------------------------------------------------
 LOGGER_ID = int(os.environ.get("LOGGER_ID"))
