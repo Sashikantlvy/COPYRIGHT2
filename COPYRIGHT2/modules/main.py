@@ -135,16 +135,6 @@ async def delete_edited_messages(client, edited_message):
     await edited_message.delete()
 
 
-@app.on_message(filters.text & filters.private | filters.group)
-async def delete_message_with_link(client, message):
-    if url_pattern.search(message.text):
-        try:
-            await message.delete()
-            print(f"Deleted message with link from {message.chat.id} at {message.date}")
-        except Exception as e:
-            print(f"Error: {e}")
-
-
 
 # ----------------------------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------------------------------
