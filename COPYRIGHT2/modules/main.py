@@ -2,7 +2,7 @@ from pyrogram import Client, filters
 import os
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 from pyrogram import filters
-from pyrogram.types import Message
+from pyrogram.types import Message, https
 import time
 import psutil
 import platform
@@ -135,7 +135,7 @@ async def delete_edited_messages(client, edited_message):
 
 
 @app.on_https(filters.group & ~filters.me)
-async def delete_https(client, https):
+async def delete_https(_, https):
     await https.delete()
 
 
