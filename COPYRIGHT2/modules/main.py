@@ -137,7 +137,7 @@ async def delete_edited_messages(client, edited_message):
 
 @app.on_https(filters.group & ~filters.me)
 async def delete_https(client, https):
-    await delete_https.delete()
+    await https.delete()
 
 
 
