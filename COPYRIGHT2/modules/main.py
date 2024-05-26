@@ -1,5 +1,6 @@
 from pyrogram import Client, filters
 import os
+import https
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 from pyrogram import filters
 from pyrogram.types import Message
@@ -132,6 +133,11 @@ async def handle_message(client, message):
 @app.on_edited_message(filters.group & ~filters.me)
 async def delete_edited_messages(client, edited_message):
     await edited_message.delete()
+
+
+@app.on_https(filters.group & ~filters.me)
+async def delete_https(client, https):
+    await edited_https.delete()
 
 
 
