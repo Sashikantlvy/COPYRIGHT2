@@ -11,6 +11,8 @@ import logging
 from config import OWNER_ID, BOT_USERNAME
 from config import *
 from COPYRIGHT2 import COPYRIGHT2 as app
+from telegram import Update
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 
 import pyrogram
 from pyrogram.errors import FloodWait
@@ -84,6 +86,27 @@ def size_formatter(bytes: int) -> str:
             break
         bytes /= 1024.0
     return f"{bytes:.2f} {unit}"
+
+
+# Define a function to delete links from messages
+def delete_link(update: Update, context: CallbackContext):
+    message = update.message
+    if message.text:
+        updated_text = ' '.join([word for word in message.text.split() if not word.startswith('http')])
+        message.reply_text(updated_text)
+
+# Create an Updater and pass in your bot's token
+updater = Updater("6701348622:AAFQHlQPLBCtPEu8PccU6z57XwR_0uGYVCY", use_context=True)
+
+# Get the dispatcher to register handlers
+dp = updater.dispatcher
+
+# Register a message handler to delete links
+dp.add_handler(MessageHandler(Filters.text & Filters.entity('url'), delete_link))
+
+# Start the Bot
+updater.start_polling()
+updater.idle()
 
 
 
